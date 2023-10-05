@@ -12,16 +12,22 @@ import (
 
 type (
 	customize struct {
-		AppIcon               string  `json:"appIcon,omitempty" yaml:"appIcon"`
-		AppTitle              string  `json:"appTitle,omitempty" yaml:"appTitle"`
-		DisableAppTitle       bool    `json:"disableAppTitle,omitempty" yaml:"disableAppTitle"`
+		AppIcon              string `json:"appIcon,omitempty" yaml:"appIcon"`
+		AppTitle             string `json:"appTitle,omitempty" yaml:"appTitle"`
+		DisableAppTitle      bool   `json:"disableAppTitle,omitempty" yaml:"disableAppTitle"`
+		DisablePoweredBy     bool   `json:"disablePoweredBy,omitempty" yaml:"disablePoweredBy"`
+		DisableQRSupport     bool   `json:"disableQRSupport,omitempty" yaml:"disableQRSupport"`
+		DisableThemeSwitcher bool   `json:"disableThemeSwitcher,omitempty" yaml:"disableThemeSwitcher"`
+
 		DisableExpiryOverride bool    `json:"disableExpiryOverride,omitempty" yaml:"disableExpiryOverride"`
-		DisablePoweredBy      bool    `json:"disablePoweredBy,omitempty" yaml:"disablePoweredBy"`
-		DisableQRSupport      bool    `json:"disableQRSupport,omitempty" yaml:"disableQRSupport"`
-		DisableThemeSwitcher  bool    `json:"disableThemeSwitcher,omitempty" yaml:"disableThemeSwitcher"`
 		ExpiryChoices         []int64 `json:"expiryChoices,omitempty" yaml:"expiryChoices"`
-		OverlayFSPath         string  `json:"-" yaml:"overlayFSPath"`
-		UseFormalLanguage     bool    `json:"-" yaml:"useFormalLanguage"`
+
+		AcceptedFileTypes      string `json:"acceptedFileTypes" yaml:"acceptedFileTypes"`
+		DisableFileAttachment  bool   `json:"disableFileAttachment" yaml:"disableFileAttachment"`
+		MaxAttachmentSizeTotal int64  `json:"maxAttachmentSizeTotal" yaml:"maxAttachmentSizeTotal"`
+
+		OverlayFSPath     string `json:"-" yaml:"overlayFSPath"`
+		UseFormalLanguage bool   `json:"-" yaml:"useFormalLanguage"`
 	}
 )
 
@@ -32,7 +38,7 @@ func loadCustomize(filename string) (cust customize, err error) {
 		return cust, nil
 	}
 
-	cf, err := os.Open(filename)
+	cf, err := os.Open(filename) //#nosec:G304 // Loading a custom file is the intention here
 	if err != nil {
 		if errors.Is(err, fs.ErrNotExist) {
 			logrus.Warn("customize file given but not found")
@@ -40,7 +46,11 @@ func loadCustomize(filename string) (cust customize, err error) {
 		}
 		return cust, errors.Wrap(err, "opening customize file")
 	}
-	defer cf.Close()
+	defer func() {
+		if err := cf.Close(); err != nil {
+			logrus.WithError(err).Error("closing customize file (leaked fd)")
+		}
+	}()
 
 	if err = yaml.NewDecoder(cf).Decode(&cust); err != nil {
 		return cust, errors.Wrap(err, "decoding customize file")

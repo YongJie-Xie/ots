@@ -19,15 +19,14 @@ generate-apidocs:
 	mv /tmp/api.html frontend/
 
 generate-inner:
-	npx --yes npm@latest ci
+	npx --yes npm@latest ci --include=dev
 	node ./ci/build.mjs
 
 publish: download_libs generate-inner generate-apidocs
-	curl -sSLo golang.sh https://raw.githubusercontent.com/Luzifer/github-publish/master/golang.sh
-	bash golang.sh
+	bash ./ci/build.sh
 
 translate:
-	cd ci/translate && go run .
+	cd ci/translate && go run . --write-issue-file
 
 # -- Download / refresh external libraries --
 

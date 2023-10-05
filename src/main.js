@@ -1,30 +1,66 @@
+/* eslint-disable sort-imports */
+/* global version */
+
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-
-import BootstrapVue from 'bootstrap-vue'
+import VueRouter from 'vue-router'
 
 import './style.scss'
 
 import app from './app.vue'
 import messages from './langs/langs.js'
+import router from './router'
 
-Vue.use(BootstrapVue)
 Vue.use(VueI18n)
+Vue.use(VueRouter)
 
 const cookieSet = Object.fromEntries(document.cookie.split('; ')
   .map(el => el.split('=')
     .map(el => decodeURIComponent(el))))
 
 const i18n = new VueI18n({
-  locale: cookieSet.lang || navigator?.language || 'en',
   fallbackLocale: 'en',
+  locale: cookieSet.lang || navigator?.language || 'en',
   messages,
 })
 
 new Vue({
-  el: '#app',
   components: { app },
-  data: { version },
+
+  data: {
+    customize: {},
+    darkTheme: false,
+    version,
+  },
+
+  el: '#app',
   i18n,
+
+  methods: {
+    navigate(to) {
+      this.$router.replace(to)
+        .catch(err => {
+          if (VueRouter.isNavigationFailure(err, VueRouter.NavigationFailureType.duplicated)) {
+            // Hide duplicate nav errors
+            return
+          }
+          throw err
+        })
+    },
+  },
+
+  mounted() {
+    this.customize = window.OTSCustomize
+    this.darkTheme = window.getTheme() === 'dark'
+  },
+
+  name: 'OTS',
   render: createElement => createElement('app'),
+  router,
+
+  watch: {
+    darkTheme(to) {
+      window.setTheme(to ? 'dark' : 'light')
+    },
+  },
 })
