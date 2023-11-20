@@ -1,4 +1,6 @@
-package main
+// Package customization contains the structure for the customization
+// file to configure the OTS web- and command-line interface
+package customization
 
 import (
 	"encoding/json"
@@ -10,8 +12,16 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+// Frontend has a max attachment size of 64MiB as the base64 encoding
+// will break afterwards. Therefore we use a maximum secret size of
+// 65MiB and increase it by double base64 encoding:
+//
+// 65 MiB * 16/9 (twice 4/3 base64 size increase)
+const defaultMaxSecretSize = 65 * 1024 * 1024 * (16 / 9) // = 115.6MiB
+
 type (
-	customize struct {
+	// Customize holds the structure of the customization file
+	Customize struct {
 		AppIcon              string `json:"appIcon,omitempty" yaml:"appIcon"`
 		AppTitle             string `json:"appTitle,omitempty" yaml:"appTitle"`
 		DisableAppTitle      bool   `json:"disableAppTitle,omitempty" yaml:"disableAppTitle"`
@@ -26,12 +36,15 @@ type (
 		DisableFileAttachment  bool   `json:"disableFileAttachment" yaml:"disableFileAttachment"`
 		MaxAttachmentSizeTotal int64  `json:"maxAttachmentSizeTotal" yaml:"maxAttachmentSizeTotal"`
 
-		OverlayFSPath     string `json:"-" yaml:"overlayFSPath"`
-		UseFormalLanguage bool   `json:"-" yaml:"useFormalLanguage"`
+		MaxSecretSize         int64    `json:"-" yaml:"maxSecretSize"`
+		MetricsAllowedSubnets []string `json:"-" yaml:"metricsAllowedSubnets"`
+		OverlayFSPath         string   `json:"-" yaml:"overlayFSPath"`
+		UseFormalLanguage     bool     `json:"-" yaml:"useFormalLanguage"`
 	}
 )
 
-func loadCustomize(filename string) (cust customize, err error) {
+// Load retrieves the Customization file from filesystem
+func Load(filename string) (cust Customize, err error) {
 	if filename == "" {
 		// None given, take a shortcut
 		cust.applyFixes()
@@ -61,13 +74,19 @@ func loadCustomize(filename string) (cust customize, err error) {
 	return cust, nil
 }
 
-func (c customize) ToJSON() (string, error) {
+// ToJSON is a templating helper which returns the customization
+// serialized as JSON in a string
+func (c Customize) ToJSON() (string, error) {
 	j, err := json.Marshal(c)
 	return string(j), errors.Wrap(err, "marshalling JSON")
 }
 
-func (c *customize) applyFixes() {
+func (c *Customize) applyFixes() {
 	if len(c.AppTitle) == 0 {
 		c.AppTitle = "OTS - One Time Secrets"
+	}
+
+	if c.MaxSecretSize == 0 {
+		c.MaxSecretSize = defaultMaxSecretSize
 	}
 }

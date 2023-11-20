@@ -32,6 +32,7 @@ reference:
     text-burn-hint: Please remember not to go to this URL yourself as that would destroy the secret. Just pass it to someone else!
     text-burn-time: 'If not viewed before, this secret will automatically be deleted:'
     text-hint-burned: <strong>Attention:</strong> You're only seeing this once. As soon as you reload the page the secret will be gone so maybe copy it now&hellip;
+    text-invalid-files-selected: At least one of the selected files is not allowed as an attachment.
     text-max-filesize: 'Maximum size: {maxSize}'
     text-max-filesize-exceeded: 'The file(s) you chose are too big to attach: {curSize} / {maxSize}'
     text-powered-by: Powered by
@@ -45,13 +46,16 @@ reference:
     title-secret-created: Secret created!
 translations:
   ca:
-    translators: []
+    translators:
+      - v0ctor
     translations:
       alert-secret-not-found: Aquest no és el secret que busques&hellip; - Si esperaves que el secret estiguera ací, és possible que s'haja vist compromés, ja que una altra persona podria haver obert l'enllaç en comptes de tu.
       alert-something-went-wrong: Alguna cosa ha eixit malament. Ens sap molt greu&hellip;
       btn-create-secret: Crea el secret!
+      btn-create-secret-processing: El secret s'està creant...
       btn-new-secret: Nou secret
       btn-reveal-secret: Mostra'm el secret!
+      btn-reveal-secret-processing: El secret s'està desxifrant...
       btn-show-explanation: Com funciona?
       expire-default: Caducitat predeterminada
       expire-n-days: '{n} dia | {n} dies'
@@ -68,9 +72,13 @@ translations:
         - Quan s'ha obtingut per primera i única vegada el secret xifrat, s'elimina del servidor
       label-expiry: 'Caduca en:'
       label-secret-data: 'Informació secreta:'
+      label-secret-files: 'Adjuntar arxius:'
+      text-attached-files: El remitent ha adjuntat arxius al secret. Assegura't que confies en aquesta persona, ja que els arxius no han sigut revisats.
       text-burn-hint: Per favor, recorda no accedir a aquest enllaç tu mateix, ja que això destruiria el secret. Només has de passar-li'l a una altra persona!
       text-burn-time: 'Si no es mostra abans, aquest secret s''eliminarà automàticament:'
       text-hint-burned: <strong>Atenció:</strong> Només veuràs això una vegada. Quan recarregues la pàgina, el secret desapareixerà, així que copia'l ja&hellip;
+      text-max-filesize: 'Mida màxima: {maxSize}'
+      text-max-filesize-exceeded: 'Els arxius seleccionats són massa grans per adjuntar-los: {curSize} / {maxSize}'
       text-powered-by: Funciona amb
       text-pre-reveal-hint: Per a mostrar el secret prem aquest botó, però tingues en compte que en fer-ho es destruirà. Només pots veure'l una vegada!
       text-pre-url: 'El teu secret ha sigut creat i emmagatzemat en el següent enllaç:'
@@ -113,6 +121,7 @@ translations:
       text-burn-hint: Bitte rufe die URL nicht selbst auf, da das Secret dadurch zerstört würde. Gib sie einfach weiter!
       text-burn-time: 'Wenn es vorher nicht eingesehen wurde, wird dieses Secret automatisch gelöscht:'
       text-hint-burned: <strong>Achtung:</strong> Du kannst das nur einmal ansehen! Sobald du die Seite neu lädst, ist das Secret verschwunden, also besser direkt kopieren und sicher abspeichern&hellip;
+      text-invalid-files-selected: Mindestens eine der ausgewählten Dateien ist nicht als Anhang erlaubt.
       text-max-filesize: 'Maximale Größe: {maxSize}'
       text-max-filesize-exceeded: 'Die ausgewählten Dateien übersteigen die maximale Größe: {curSize} / {maxSize}'
       text-powered-by: Läuft mit
@@ -143,13 +152,16 @@ translations:
       title-new-secret: Ein neues Secret erstellen
   es:
     deeplLanguage: es
-    translators: []
+    translators:
+      - v0ctor
     translations:
       alert-secret-not-found: Este no es el secreto que buscas&hellip; - Si esperabas que el secreto estuviera aquí, es posible que se haya visto comprometido, ya que otra persona podría haber abierto el enlace en tu lugar.
       alert-something-went-wrong: Algo ha salido mal. Lo sentimos mucho&hellip;
       btn-create-secret: ¡Crea el secreto!
+      btn-create-secret-processing: El secreto se está creando...
       btn-new-secret: Nuevo secreto
       btn-reveal-secret: ¡Muéstrame el secreto!
+      btn-reveal-secret-processing: El secreto se está descifrando...
       btn-show-explanation: ¿Cómo funciona?
       expire-default: Caducidad predeterminada
       expire-n-days: '{n} día | {n} días'
@@ -166,9 +178,13 @@ translations:
         - Cuando se ha obtenido por primera y única vez el secreto cifrado, se elimina del servidor
       label-expiry: 'Caduca en:'
       label-secret-data: 'Información secreta:'
+      label-secret-files: 'Adjuntar archivos:'
+      text-attached-files: El remitente ha adjuntado archivos al secreto. Asegúrate de que confías en esta persona, ya que los archivos no han sido revisados.
       text-burn-hint: Por favor, recuerda no acceder a este enlace tú mismo, ya que esto destruiría el secreto. ¡Solo tienes que pasárselo a otra persona!
       text-burn-time: 'Si no se muestra antes, este secreto se eliminará automáticamente:'
       text-hint-burned: <strong>Atención:</strong> Solo verás esto una vez. En cuanto recargues la página, el secreto desaparecerá, así que cópialo ya&hellip;
+      text-max-filesize: 'Tamaño máximo: {maxSize}'
+      text-max-filesize-exceeded: 'Los archivos seleccionados son demasiado grandes para adjuntarlos: {curSize} / {maxSize}'
       text-powered-by: Funciona con
       text-pre-reveal-hint: Para mostrar el secreto pulsa este botón, pero ten en cuenta que al hacerlo se destruirá. ¡Solo puedes verlo una vez!
       text-pre-url: 'Tu secreto ha sido creado y almacenado en el siguiente enlace:'
@@ -253,9 +269,12 @@ translations:
       alert-secret-not-found: De gegevens die je zocht bestaan niet (meer)&hellip; - Als je hier informatie verwachtte dan is de link mogelijk al door iemand anders bekeken!
       alert-something-went-wrong: Er ging iets verkeerd, sorry&hellip;
       btn-create-secret: Nieuwe vertrouwelijke info aanmaken!
+      btn-create-secret-processing: Vertrouwelijke info wordt versleuteld...
       btn-new-secret: Nieuw
       btn-reveal-secret: Toon mij de vertrouwelijke info!
+      btn-reveal-secret-processing: Vertrouwelijke info wordt ontsleuteld...
       btn-show-explanation: Hoe werkt dit?
+      expire-default: Standaard termijn
       expire-n-days: '{n} dag | {n} dagen'
       expire-n-hours: '{n} uur | {n} uur'
       expire-n-minutes: '{n} minuut | {n} minuten'
@@ -268,9 +287,15 @@ translations:
         - Je geeft de URL met identificatie en het gegenereerde wachtwoord aan de ontvanger.
         - 'De ontvanger kan de vertrouwelijke informatie exact eenmaal bekijken: indien het niet lukt heeft mogelijk iemand anders de info gezien!'
         - De versleutelde data wordt van de server gewist van zodra de ontvanger het bekeken heeft.
+      label-expiry: 'Verwijder na:'
       label-secret-data: 'Vertrouwelijke info:'
+      label-secret-files: 'Bestanden toevoegen:'
+      text-attached-files: De afzender heeft bestanden toegevoegd. Deze werden niet gecontroleerd, gebruik deze enkel als je de afzender vertrouwt!
       text-burn-hint: 'Bezoek de URL niet zelf: je kan deze slechts eenmaal gebruiken. Geef de URL aan de ontvanger.'
+      text-burn-time: 'Deze vertrouwelijke informatie wordt automatisch gewist indien niet bekeken voor:'
       text-hint-burned: <strong>Opgelet:</strong> Je ziet deze informatie alleen nu. Je kan het niet meer opnieuw opvragen als je de pagina verlaat.
+      text-max-filesize: 'Maximum grootte: {maxSize}'
+      text-max-filesize-exceeded: 'De bestanden die je toevoegde zijn te groot: {curSize} / {maxSize}'
       text-powered-by: Mogelijk gemaakt door
       text-pre-reveal-hint: 'Gebruik deze knop om de vertrouwelijke info op te halen. Let op: Je kan dit slechts eenmaal doen!'
       text-pre-url: 'Je vertrouwelijke informatie kan opgevraagd worden via deze URL:'
@@ -282,13 +307,16 @@ translations:
       title-secret-created: Vertrouwelijke info opgeslaan!
   pl:
     deeplLanguage: pl
-    translators: []
+    translators:
+      - Icikowski
     translations:
-      alert-secret-not-found: TO nie jest sekret, którego szukasz&hellip; - Jeśli spodziewałeś się tu sekretu, to może być on zagrożony, ponieważ ktoś inny mógł już otworzyć ten link.
+      alert-secret-not-found: To nie jest sekret, którego szukasz&hellip; - Jeśli spodziewałeś się tu sekretu, to może być on zagrożony, ponieważ ktoś inny mógł już otworzyć ten link.
       alert-something-went-wrong: Coś poszło nie tak. Bardzo mi przykro&hellip;
-      btn-create-secret: Swtórz sekret!
+      btn-create-secret: Stwórz sekret!
+      btn-create-secret-processing: Sekret jest tworzony...
       btn-new-secret: Nowy sekret
       btn-reveal-secret: Pokaż mi sekret!
+      btn-reveal-secret-processing: Sekret jest odszyfrowywany...
       btn-show-explanation: Jak to działa?
       expire-default: Domyślne wygasanie
       expire-n-days: '{n} dzień | {n} dni'
@@ -305,9 +333,14 @@ translations:
         - Po jednorazowym odczytaniu zaszyfrowanego sekretu, jest on usuwany z serwera
       label-expiry: 'Wygasa po:'
       label-secret-data: 'Dane sekretu:'
+      label-secret-files: 'Dołącz pliki:'
+      text-attached-files: Nadawca dołączył pliki do tego sekretu. Upewnij się, że ufasz nadawcy, bo pliki nie są sprawdzane!
       text-burn-hint: Pamiętaj, aby nie przechodzić na ten adres URL samemu, ponieważ to zniszczy sekret. Po prostu przekaż go odbiorcy!
       text-burn-time: 'Jeżeli nie zostanie wyświetlony, ten sekret zostanie automatycznie usunięty:'
       text-hint-burned: <strong>Uwaga:</strong> Zobaczysz to tylko raz. Gdy odświeżysz stronę, to sekret nie będzie już dostępny, więc lepiej skopiuj go teraz&hellip;
+      text-invalid-files-selected: Co najmniej jeden z załączonych plików nie jest dopuszczalny jako załącznik.
+      text-max-filesize: 'Maksymalny rozmiar: {maxSize}'
+      text-max-filesize-exceeded: 'Wybrane załączniki przekraczają maksymalny rozmiar: {curSize} / {maxSize}'
       text-powered-by: Obsługiwane przez
       text-pre-reveal-hint: Aby odsłonić sekret, naciśnij ten przycisk, jednak wiedz, że to zniszczy sekret. Możesz go zobaczyć tylko raz!
       text-pre-url: 'Twój sekret został stworzony i zachowany pod tym adresem URL:'
@@ -315,7 +348,7 @@ translations:
       title-explanation: Oto, jak to działa&hellip;
       title-new-secret: Stwórz nowy sekret
       title-reading-secret: Odczytywanie Twojego sekretu&hellip;
-      title-secret-create-disabled: Tworzenie sekretó wyłączone&hellip;
+      title-secret-create-disabled: Tworzenie sekretów wyłączone&hellip;
       title-secret-created: Sekret utworzony!
   pt-BR:
     deeplLanguage: pt-BR
@@ -353,14 +386,18 @@ translations:
       title-secret-created: Segredo criado!
   ru:
     deeplLanguage: ru
-    translators: []
+    translators:
+      - alexovchinnicov
     translations:
       alert-secret-not-found: Секрет недоступен&hellip; - Помните, он может быть скомпрометирован. Возможно кто-то другой уже открыл вашу ссылку.
       alert-something-went-wrong: Что-то пошло не так. Приносим свои извинения&hellip;
       btn-create-secret: Создать секрет!
+      btn-create-secret-processing: Секрет создаётся ...
       btn-new-secret: Новый секрет
       btn-reveal-secret: Показать секрет!
+      btn-reveal-secret-processing: Секрет декодируется ...
       btn-show-explanation: Как это работает?
+      expire-default: Значение по умолчанию до исчезновения
       expire-n-days: '{n} день | {n} дней'
       expire-n-hours: '{n} час | {n} часов'
       expire-n-minutes: '{n} минут | {n} минут'
@@ -373,10 +410,16 @@ translations:
         - Вы передаете отображаемый URL-адрес, содержащий идентификатор и пароль для расшифровки, получателю.
         - 'Получатель может просмотреть секрет ровно один раз: если он не смог, секрет возможно был просмотрен кем-то другим!'
         - После того как зашифрованный секрет был извлечен, он удаляется с сервера.
+      label-expiry: 'Исчезнет через:'
       label-secret-data: 'Секретные данные:'
+      label-secret-files: 'Прикреплённые файлы:'
+      text-attached-files: Отправитель прикрепил файлы к секрету. Убедитесь, что вы доверяете отправителю, так как файлы не были проверены!
       text-burn-hint: Пожалуйста, не переходите по этому URL для проверки, так как это удалит секрет. Просто скопируйте и передайте его!
+      text-burn-time: 'Если этот секрет не был просмотрен ранее, он будет автоматически удален:'
       text-hint-burned: <strong>Внимание:</strong> Секрет будет показан только один раз. Как только вы перезагрузите страницу, секрет исчезнет, скопируйте его незамедлительно&hellip;
-      text-powered-by: Powered by
+      text-max-filesize: 'Максимальный размер: {maxSize}'
+      text-max-filesize-exceeded: 'Ваш файл(ы) слишком большой для прикрепления к секрету: {curSize} / {maxSize}'
+      text-powered-by: Основан
       text-pre-reveal-hint: Чтобы раскрыть секрет, нажмите эту кнопку, но имейте в виду, что это приведет к уничтожению секрета. Вы можете просмотреть его только один раз!
       text-pre-url: 'Ваш секрет создан и сохранён, его URL:'
       text-secret-create-disabled: Создание новых секретов в этом случае отключено.
@@ -392,9 +435,12 @@ translations:
       alert-secret-not-found: Hemlighet hittades inte&hellip; - Om du förväntade dig att hemligheten skulle finnas här kan den vara röjd då någon annan kan ha öppnat denna länk tidigare.
       alert-something-went-wrong: Något gick fel. Jag ber om ursäkt för detta!&hellip;
       btn-create-secret: Skapa hemliget!
+      btn-create-secret-processing: Hemlighet håller på att skapas..
       btn-new-secret: Ny hemlighet.
       btn-reveal-secret: Visa mig hemligheten!
+      btn-reveal-secret-processing: Hemlighet håller på att dekrypteras..
       btn-show-explanation: Hur fungerar detta?
+      expire-default: Standard utgångstid
       expire-n-days: '{n} dag | {n} dagar'
       expire-n-hours: '{n} timme | {n} timmar'
       expire-n-minutes: '{n} minut | {n} minuter'
@@ -407,9 +453,15 @@ translations:
         - Du skickar URL-länken med ID-numret och avkrypteringslösenordet till mottagaren
         - 'Mottagaren kan se hemligheten exakt en gång: Om detta misslyckas kan hemligheten redan ha setts av någon annan!'
         - När hemligheten har setts en gång, raderas den från servern
+      label-expiry: 'Expirerar om:'
       label-secret-data: 'Hemlig data:'
+      label-secret-files: 'Bifoga filer:'
+      text-attached-files: Avsändaren har bifogat filer till denna hemlighet. Se till att du litar på avsändaren, eftersom filerna inte har kontrollerats!
       text-burn-hint: Kom ihåg att inte gå till denna URL själv eftersom detta skulle förbruka hemligheten. Skicka bara vidare den till mottagaren!
+      text-burn-time: 'Om hemligheten inte visas innan, kommer den att förbrukas automatiskt:'
       text-hint-burned: <strong>Observera:</strong> Du kan endast se denna sida en gång. Så fort du laddar om sidan kommer hemligheten att försvinna så kopiera den nu&hellip;
+      text-max-filesize: 'Maximal storlek: {maxSize}'
+      text-max-filesize-exceeded: 'Filerna du valt är för stora för att kunna bifogas: {curSize} / {maxSize}'
       text-powered-by: Drivs av
       text-pre-reveal-hint: För att visa hemligheten klicka på denna knapp. Var medveten om att när du gör det kommer hemligheten att förbrukas, du kan endast se den en gång!
       text-pre-url: 'Din hemlighet har skapats och lagrats med denna URL:'
@@ -460,14 +512,16 @@ translations:
       alert-secret-not-found: Це не секрет, який ви шукаєте&hellip; - Якщо ви очікували, що секрет буде тут, він міг бути скомпрометований, оскільки хтось інший міг уже відкрити посилання.
       alert-something-went-wrong: Щось пішло не так. Ми дуже шкодуємо про це&hellip;
       btn-create-secret: Створіть секрет!
+      btn-create-secret-processing: Секрет створюється...
       btn-new-secret: Новий секрет
       btn-reveal-secret: Показати мені секрет!
+      btn-reveal-secret-processing: Секрет розшифровується…
       btn-show-explanation: Як це працює?
       expire-default: Термін дії за замовчуванням
       expire-n-days: '{n} день | {n} днів'
       expire-n-hours: '{n} година | {n} годин'
       expire-n-minutes: '{n} хвилина | {n} хвилин'
-      expire-n-seconds: '{n} секунда | {n} скунд'
+      expire-n-seconds: '{n} секунда | {n} секунд'
       items-explanation:
         - Уведіть секрет у поле на цій сторінці
         - Ваш браузер шифрує секрет за допомогою згенерованого пароля
@@ -478,9 +532,13 @@ translations:
         - Після того, як зашифрований секрет було отримано один раз, він видаляється з сервера
       label-expiry: 'Термін дії закінчується:'
       label-secret-data: 'Секретні дані:'
+      label-secret-files: 'Прикріпити файли:'
+      text-attached-files: Відправник прикріпив файли до секрету. Переконайтеся, що ви довіряєте відправнику, оскільки файли не перевірялися!
       text-burn-hint: Пам’ятайте, що не переходьте за цією URL-адресою самостійно, оскільки це знищить секрет. Просто передайте це комусь іншому!
       text-burn-time: 'Якщо раніше його не переглядати, цей секрет буде автоматично видалено:'
       text-hint-burned: <strong>Увага:</strong> Ви бачите це лише раз. Щойно ви перезавантажите сторінку, секрет зникне, тому, можливо, скопіюйте його зараз&hellip;
+      text-max-filesize: 'Максимальний розмір: {maxSize}'
+      text-max-filesize-exceeded: 'Вибрані вами файли завеликі, щоб вкласти: {curSize} / {maxSize}'
       text-powered-by: Powered by
       text-pre-reveal-hint: Щоб розкрити секрет, натисніть цю кнопку, але майте на увазі, що це знищить секрет. Ви можете переглянути його лише один раз!
       text-pre-url: 'Ваш секрет було створено та збережено за допомогою цієї URL-адреси:'
@@ -491,13 +549,16 @@ translations:
       title-secret-create-disabled: Створення секрету вимкнено…
       title-secret-created: Секрет створений!
   zh:
-    translators: []
+    translators:
+      - YongJie-Xie
     translations:
-      alert-secret-not-found: 该秘密不存在 - 如果这与您的预期不符，那么该链接可能已经泄露，且您的秘密已经被其他人查看了。
+      alert-secret-not-found: 不存在该机密 - 如果这不符合您的预期，那么该链接可能已经泄露，且您的机密已经被他人查看过了。
       alert-something-went-wrong: 运行异常，对此我深感抱歉…
-      btn-create-secret: 创建秘密
-      btn-new-secret: 新的秘密
-      btn-reveal-secret: 向我展示秘密
+      btn-create-secret: 创建机密
+      btn-create-secret-processing: 机密正在创建中…
+      btn-new-secret: 新的机密
+      btn-reveal-secret: 向我展示机密
+      btn-reveal-secret-processing: 机密正在解密中…
       btn-show-explanation: 它如何运作？
       expire-default: 默认过期时间
       expire-n-days: '{n} 天 | {n} 天'
@@ -505,27 +566,31 @@ translations:
       expire-n-minutes: '{n} 分钟 | {n} 分钟'
       expire-n-seconds: '{n} 秒 | {n} 秒'
       items-explanation:
-        - 您在当前页面的文本框内输入“秘密”内容
-        - 您的浏览器会生成随机密钥并对“秘密”进行加密
-        - 您的浏览器会发送加密后的“秘密”到服务器（明文内容和随机密钥都不会被发送！）
-        - 服务器接收加密的“秘密”并在指定的时间段内保留（过期自动销毁）
+        - 您在当前页面的文本框内输入机密内容
+        - 您的浏览器会生成随机密钥并对机密内容进行加密
+        - 您的浏览器会发送加密后的机密内容到服务器（明文内容和随机密钥都不会被发送！）
+        - 服务器将接收加密的机密并在指定的时间段内保留（过期会自动销毁）
         - 您需要将包含 ID 和随机密钥的访问链接发送给收件人
-        - 收件人仅有一次查看“秘密”的机会（如果无法查看，则表示“秘密”已被其他人查看过！）
-        - 服务器会在“秘密”被查看一次后立即将其销毁
+        - 收件人仅有一次查看机密的机会（如果无法查看，则表示机密已被其他人查看过！）
+        - 服务器会在机密被查看一次后立即将其销毁
       label-expiry: 过期时间：
-      label-secret-data: 秘密内容：
-      text-burn-hint: 请您记住不要自己访问此链接，因为这会导致秘密被销毁。就这样转发给收件人吧！
-      text-burn-time: 如果秘密没有被查看，将会在此时间自动销毁：
-      text-hint-burned: <strong>注意：</strong>您只能查看一次秘密，请尽快拷贝！刷新页面会导致秘密消失！
+      label-secret-data: 机密内容：
+      label-secret-files: 附加文件：
+      text-attached-files: 发件人在此机密中附加了文件，但该文件未经检查，请确保发件人可信！
+      text-burn-hint: 请您记住不要自己访问此链接，因为这会导致机密被销毁。请原封不动的转发给收件人吧！
+      text-burn-time: 如果机密没有被查看，将会在此时间自动销毁：
+      text-hint-burned: <strong>注意：</strong>您只能查看一次机密，请尽快拷贝！刷新页面也会导致机密消失！
+      text-max-filesize: 附加文件大小上限：{maxSize}
+      text-max-filesize-exceeded: 您选择的文件过大，无法附加：{curSize} / {maxSize}
       text-powered-by: Powered by
-      text-pre-reveal-hint: 点击按钮即可查看秘密，但请注意该操作会销毁秘密，而且您只能查看一次！
-      text-pre-url: 您的秘密已创建，访问链接如下：
-      text-secret-create-disabled: 该实例被禁止创建秘密。
+      text-pre-reveal-hint: 点击按钮即可查看机密，但请注意该操作会立即销毁机密，而且您也只能查看一次！
+      text-pre-url: 您的机密已创建，访问链接如下：
+      text-secret-create-disabled: 该实例被禁止创建机密。
       title-explanation: 这就是它的运作原理…
-      title-new-secret: 创建一个秘密
-      title-reading-secret: 查看你的秘密…
-      title-secret-create-disabled: 创建秘密被禁止…
-      title-secret-created: 秘密已创建！
+      title-new-secret: 创建一个机密
+      title-reading-secret: 查看您的机密…
+      title-secret-create-disabled: 创建机密被禁止…
+      title-secret-created: 机密已创建！
   zh-TW:
     translators: []
     translations:
